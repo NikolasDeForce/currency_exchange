@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Курс Валют</title>
+  </head>
+  <body>
+    <center>
+      <h1>Калькулятор посчитал нужное количество рублей для указанной иностранной валюты</h1>
+    </center>
+    <center>
+      <h2>-----------------------------------------------------------------------------------------------</h2>
+    </center>
+    <center>
+      <h1>Название: {{ .Name }}</h1>
+      <h1>Код: {{ .Code }}</h1>
+      <h1>Лот: {{ .Value }}</h1>
+      <h1>Цена: {{ .Price }}</h1>
+      <h1>Изменение: {{ .Change }}</h1>
+      <h1>% {{ .Percent }}</h1>
+    </center>
+      <center>
+        <form action="http://localhost:8010/calculate">
+          <button type="submit">Изменить</button>
+        </form>
+      </center>
+      <center>
+        <form action="http://localhost:8010/">
+          <button type="submit">Главное меню</button>
+        </form>
+      </center>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Курс Валют</title>
+  </head>
+  <body>
+    <center>
+      <h1>Калькулятор Валюты</h1>
+    </center>
+    <center>
+        <h1>Введите код валюты и количество в валюте и калькулятор посчитает сумму в рублях</h1>
+      </center>
+      <center>
+        <form>
+            <p><input type="text" name="Code" placeholder="AED, AMD, AUD, AZN, EUR, USD" size="18" maxlength="11" /></p>
+            <p><input type="text" name="Value" placeholder="100" size="18" maxlength="11" /></p>
+            <p>
+                <button type="submit">Отправить</button> 
+            </p>
+        </form>
+    </center>
+      <center>
+        <form action="http://localhost:8010/calculate/ok">
+          <button type="submit">Рассчитать</button>
+        </form>
+      </center>
+      <center>
+        <form action="http://localhost:8010/">
+          <button type="submit">Главное меню</button>
+        </form>
+      </center>
+  </body>
+</html>
