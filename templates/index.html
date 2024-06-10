@@ -25,7 +25,7 @@
               </tr>
             </thead>
             <tbody>
-                {{ range .Dates}}
+                {{ range .DatesCurrency}}
               <tr>
                 <td style="border: 3px solid rgb(42, 9, 159);">{{ .Name }}</td>
                 <td style="border: 3px solid rgb(42, 9, 159);">{{ .Code }}</td>
@@ -46,6 +46,11 @@
       <center>
         <form action="http://localhost:8010/calculate">
           <button type="submit">Калькулятор</button>
+        </form>
+      </center>
+      <center>
+        <form action="http://localhost:8010/crypto">
+          <button type="submit">Криптовалюта</button>
         </form>
       </center>
   </body>

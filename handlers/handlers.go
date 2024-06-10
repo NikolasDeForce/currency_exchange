@@ -10,7 +10,8 @@ import (
 )
 
 type ViewData struct {
-	Dates []exchange.CSVData
+	DatesCurrency []exchange.CSVCurrencyData
+	DatesCrypto   []exchange.CSVCryptoData
 }
 
 var c = core.CalcCode{
@@ -31,14 +32,32 @@ var v = CalcVal{
 }
 
 func MainHandler(w http.ResponseWriter, r *http.Request) {
+	exchange.WriteCurrencyCSV("exchange.csv")
+
+	dates := exchange.ReadCurrencyCSV("exchange.csv")
+
 	tmpl, _ := template.ParseFiles("./templates/index.html")
 
-	dates := exchange.ReadCSV("exchange.csv")
+	data := ViewData{
+		DatesCurrency: dates,
+	}
+
+	err := tmpl.Execute(w, data)
+	if err != nil {
+		fmt.Println(err)
+	}
+}
+
+func CryptoHandler(w http.ResponseWriter, r *http.Request) {
+	exchange.WriteCryptoExchange("crypto.csv")
+
+	dates := exchange.ReadCryptoCSV("crypto.csv")
+
+	tmpl, _ := template.ParseFiles("./templates/crypto.html")
 
 	data := ViewData{
-		Dates: dates,
+		DatesCrypto: dates,
 	}
-	exchange.WriteCSV("exchange.csv")
 
 	err := tmpl.Execute(w, data)
 	if err != nil {
@@ -49,7 +68,7 @@ func MainHandler(w http.ResponseWriter, r *http.Request) {
 func CalcHandler(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 
-	dates := exchange.ReadCSV("exchange.csv")
+	dates := exchange.ReadCurrencyCSV("exchange.csv")
 
 	v.Val, _ = strconv.ParseFloat(r.FormValue("Value"), 64)
 

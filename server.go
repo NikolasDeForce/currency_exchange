@@ -27,6 +27,7 @@ func main() {
 	}
 
 	mux.Handle("/", http.HandlerFunc(handler.MainHandler))
+	mux.Handle("/crypto", http.HandlerFunc(handler.CryptoHandler))
 	mux.Handle("/calculate", http.HandlerFunc(handler.CalcHandler))
 	mux.Handle("/calculate/ok", http.HandlerFunc(handler.OkHandler))
 

@@ -10,7 +10,7 @@ import (
 	"github.com/gocolly/colly/v2"
 )
 
-type CSVData struct {
+type CSVCurrencyData struct {
 	Name    string `csv:"Name"`
 	Code    string `csv:"Code"`
 	Value   string `csv:"Value"`
@@ -19,7 +19,7 @@ type CSVData struct {
 	Percent string `csv:"Percent"`
 }
 
-func WriteCSV(fName string) {
+func WriteCurrencyCSV(fName string) {
 	file, err := os.Create(fName)
 	if err != nil {
 		log.Fatalf("Cannot create file %q: %s\n", fName, err)
@@ -49,14 +49,14 @@ func WriteCSV(fName string) {
 	c.Visit("https://finance.rambler.ru/currencies/")
 }
 
-func ReadCSV(fName string) []CSVData {
+func ReadCurrencyCSV(fName string) []CSVCurrencyData {
 	file, err := os.Open(fName)
 	if err != nil {
 		panic(err)
 	}
 	defer file.Close()
 
-	dates := []CSVData{}
+	dates := []CSVCurrencyData{}
 	if err := gocsv.UnmarshalFile(file, &dates); err != nil {
 		fmt.Println(err)
 	}

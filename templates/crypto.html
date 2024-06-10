@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Курс Валют</title>
+  </head>
+  <body>
+    <center>
+      <h1>Вы перешли на страницу просмотра Криптовалютных Индексов</h1>
+    </center>
+    <center>
+        <h1>Внимание, в таблице указаны цены в $</h1>
+      </center>
+      <center>
+        <table style="border: 3px solid rgb(42, 9, 159);">
+            <thead>
+              <tr>
+                <th style="border: 3px solid rgb(42, 9, 159);">Название</th>
+                <th style="border: 3px solid rgb(42, 9, 159);">Символ</th>
+                <th style="border: 3px solid rgb(42, 9, 159);">Рыночная капитализация</th>
+                <th style="border: 3px solid rgb(42, 9, 159);">Цена</th>
+                <th style="border: 3px solid rgb(42, 9, 159);">Оборот</th>
+                <th style="border: 3px solid rgb(42, 9, 159);">Объем(24ч)</th>
+                <th style="border: 3px solid rgb(42, 9, 159);">Изменение за 1 час(в %)</th>
+                <th style="border: 3px solid rgb(42, 9, 159);">Изменение за 24 час(в %)</th>
+                <th style="border: 3px solid rgb(42, 9, 159);">Изменение за неделю(в %)</th>
+              </tr>
+            </thead>
+            <tbody>
+                {{ range .DatesCrypto}}
+              <tr>
+                <td style="border: 3px solid rgb(42, 9, 159);">{{ .Name }}</td>
+                <td style="border: 3px solid rgb(42, 9, 159);">{{ .Symbol }}</td>
+                <td style="border: 3px solid rgb(42, 9, 159);">{{ .MarketCap }}</td>
+                <td style="border: 3px solid rgb(42, 9, 159);">{{ .Price }}</td>
+                <td style="border: 3px solid rgb(42, 9, 159);">{{ .CirculatingSupply }}</td>
+                <td style="border: 3px solid rgb(42, 9, 159);">{{ .Volume }}</td>
+                <td style="border: 3px solid rgb(42, 9, 159);">{{ .Changeh }}</td>
+                <td style="border: 3px solid rgb(42, 9, 159);">{{ .Change24h }}</td>
+                <td style="border: 3px solid rgb(42, 9, 159);">{{ .Changed }}</td>
+              </tr>
+              {{ end }}
+            </tbody>
+          </table>
+      </center>
+      <center>
+        <form action="http://localhost:8010/">
+          <button type="submit">Обновить данные</button>
+        </form>
+      </center>
+      <center>
+        <form action="http://localhost:8010/">
+          <button type="submit">Главное меню</button>
+        </form>
+      </center>
+  </body>
+</html>
