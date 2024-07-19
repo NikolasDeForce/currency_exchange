@@ -32,9 +32,9 @@ var v = CalcVal{
 }
 
 func MainHandler(w http.ResponseWriter, r *http.Request) {
-	exchange.WriteCurrencyCSV("exchange.csv")
+	exchange.WriteCurrencyCSV("./data/exchange.csv")
 
-	dates := exchange.ReadCurrencyCSV("exchange.csv")
+	dates := exchange.ReadCurrencyCSV("./data/exchange.csv")
 
 	tmpl, _ := template.ParseFiles("./templates/index.html")
 
@@ -49,9 +49,9 @@ func MainHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func CryptoHandler(w http.ResponseWriter, r *http.Request) {
-	exchange.WriteCryptoExchange("crypto.csv")
+	exchange.WriteCryptoExchange("./data/crypto.csv")
 
-	dates := exchange.ReadCryptoCSV("crypto.csv")
+	dates := exchange.ReadCryptoCSV("./data/crypto.csv")
 
 	tmpl, _ := template.ParseFiles("./templates/crypto.html")
 
@@ -68,7 +68,7 @@ func CryptoHandler(w http.ResponseWriter, r *http.Request) {
 func CalcHandler(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 
-	dates := exchange.ReadCurrencyCSV("exchange.csv")
+	dates := exchange.ReadCurrencyCSV("./data/exchange.csv")
 
 	v.Val, _ = strconv.ParseFloat(r.FormValue("Value"), 64)
 

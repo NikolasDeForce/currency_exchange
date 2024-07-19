@@ -35,14 +35,14 @@ func WriteCurrencyCSV(fName string) {
 	// Instantiate default collector
 	c := colly.NewCollector()
 
-	c.OnHTML("div.finance-currency-table__body a", func(e *colly.HTMLElement) {
+	c.OnHTML("tr.A1NefxsU", func(e *colly.HTMLElement) {
 		writer.Write([]string{
-			e.ChildText(".finance-currency-table__cell--currency"),
-			e.ChildText(".finance-currency-table__cell--code"),
-			e.ChildText(".finance-currency-table__cell--denomination"),
-			e.ChildText(".finance-currency-table__cell--value"),
-			e.ChildText(".finance-currency-table__cell--change"),
-			e.ChildText(".finance-currency-table__cell--percent"),
+			e.ChildText("span.OYTwr2Ke"),
+			e.ChildText("span.Vf1AWW7q"),
+			e.ChildText("span.PjocFlvi"),
+			e.ChildText("span._ZXx92_y"),
+			e.ChildTexts("span.M6nt2YLN")[0],
+			e.ChildTexts("span.M6nt2YLN")[1],
 		})
 	})
 
